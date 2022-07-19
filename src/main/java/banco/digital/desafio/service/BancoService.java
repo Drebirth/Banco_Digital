@@ -1,5 +1,6 @@
 package banco.digital.desafio.service;
 
+import banco.digital.desafio.exceptions.UsuarioNaoEncontrado;
 import banco.digital.desafio.model.Banco;
 import banco.digital.desafio.repository.BancoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +28,14 @@ public class BancoService {
     }
 
     public Banco find(Long id){
-         var b = findId(id);
+         Banco b = findId(id);
          return b;
     }
 
 
-    private Banco findId(Long id){
-        return banco.findById(id).orElseThrow();
+    private Banco findId(Long id) {
+      return banco.findById(id).orElseThrow();
+      
     }
 
 

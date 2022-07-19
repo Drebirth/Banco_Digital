@@ -7,12 +7,13 @@ import javax.persistence.*;
 public class Conta {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Conta_id")
     private Long id;
     private int agencia;
     private int numero;
     private double saldo;
+    private double valor;
 
     private String conta;
     @ManyToOne
@@ -54,6 +55,14 @@ public class Conta {
         this.saldo = saldo;
     }
 
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     public String getConta() {
         return conta;
     }
@@ -62,7 +71,7 @@ public class Conta {
         this.conta = conta;
     }
 
-   // public Banco getBanco() {return banco;}
+    public Banco getBanco() {return banco;}
 
     public void setBanco(Banco banco) {
         this.banco = banco;

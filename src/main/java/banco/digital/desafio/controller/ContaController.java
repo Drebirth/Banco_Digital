@@ -1,5 +1,7 @@
 package banco.digital.desafio.controller;
 
+import banco.digital.desafio.exceptions.UsuarioNaoEncontrado;
+import banco.digital.desafio.exceptions.contaUsuario.ValorException;
 import banco.digital.desafio.model.Conta;
 import banco.digital.desafio.service.ContaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,28 @@ public class ContaController {
 
 
     @PostMapping("/{id}")
-    public Conta post(@PathVariable Long id, @RequestBody Conta c ){
+    public Conta post(@PathVariable Long id, @RequestBody Conta c )throws Exception{
         return conta.post(id,c);
+    }
+
+    @GetMapping("/{id}")
+    public Conta encontrar(@PathVariable Long id) throws UsuarioNaoEncontrado{
+        return conta.encontrar(id);
+    }
+
+    @PutMapping("/{id}")
+    public Conta depositar(@PathVariable Long id, @RequestBody Conta c) throws UsuarioNaoEncontrado{
+        return conta.depositar(id, c);
+    }
+
+    @PutMapping("/sacar/{id}")
+    public Conta sacar(@PathVariable Long id, @RequestBody Conta c)throws UsuarioNaoEncontrado, ValorException{
+        return conta.sacar(id, c);
+    }
+
+    @PutMapping("/transferir/{id}")
+    public Conta transferir(@PathVariable Long id, Conta c) throws UsuarioNaoEncontrado, ValorException{
+        return conta.transferir(id, c);
     }
 
 }

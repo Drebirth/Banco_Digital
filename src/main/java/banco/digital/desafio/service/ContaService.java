@@ -30,7 +30,6 @@ public class ContaService {
         var b = banco.find(id);
         b.setId(b.getId());
         c.setBanco(b);
-        //c.setConta(String.valueOf(TipoConta.poupança));
         return conta.save(c);
     }
 
@@ -62,23 +61,16 @@ public class ContaService {
             return c;
         }
 
-    public Conta transferir(Long id, Conta c) throws UsuarioNaoEncontrado, ValorException{
-        var idConta1 = encontrar(id);
-        idConta1.setValor(c.getValor());
-        idConta1 = sacar(id,idConta1 );
-        conta.save(idConta1);
-        c = depositar(c.getId(), c);
-        conta.save(c);
-        return idConta1;
-
-    }
-    
+        
+     
 
 
     private Conta find(Long id) throws UsuarioNaoEncontrado{
         return conta.findById(id).orElseThrow(() ->
         new UsuarioNaoEncontrado(id));
     }
+
+
 
 
 }

@@ -48,9 +48,6 @@ public class ContaController {
         return conta.sacar(id, c);
     }
 
-    @PutMapping("/transferir/{id}")
-    public Conta transferir(@PathVariable Long id, Conta c) throws UsuarioNaoEncontrado, ValorException{
-        return conta.transferir(id, c);
-    }
+   
 
 }

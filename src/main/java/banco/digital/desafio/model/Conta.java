@@ -23,6 +23,7 @@ public class Conta {
 
     Conta(){}
 
+
     public Long getId() {
         return id;
     }
@@ -71,8 +72,7 @@ public class Conta {
         this.conta = conta;
     }
 
-    public Banco getBanco() {return banco;}
-
+   
     public void setBanco(Banco banco) {
         this.banco = banco;
     }
